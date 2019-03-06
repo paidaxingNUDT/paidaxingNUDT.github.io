@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="猴赛雷的博客">
+    <meta name="keyword" content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        从头学习图像细分类网络详细记录 - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> 是个狼人 </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="//monkey-hexo.oss-cn-beijing.aliyuncs.com/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%85%8D%E5%9B%BE/%E7%AE%80%E5%8E%86%E7%85%A7.jpg">
+        </div>
+        <div class="name">
+            <i>猴赛雷</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li>
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li>
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#从头学习图像细分类网络详细记录"><span class="toc-text">从头学习图像细分类网络详细记录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#写代码前期准备："><span class="toc-text">写代码前期准备：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#code"><span class="toc-text">code</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pre-trained模型"><span class="toc-text">pre-trained模型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改vgg16模型代码："><span class="toc-text">修改vgg16模型代码：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改vgg训练代码"><span class="toc-text">修改vgg训练代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#数据前期准备和读取"><span class="toc-text">数据前期准备和读取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#训练代码编写"><span class="toc-text">训练代码编写</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#测试代码的编写"><span class="toc-text">测试代码的编写</span></a></li></ol></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input">
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> 是个狼人 </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        从头学习图像细分类网络详细记录
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2019-01-09 21:36:03</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#认真学习的猴赛雷" title="认真学习的猴赛雷">认真学习的猴赛雷</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+
+    </div>
+    <div class="post-content ">
+        <h1 id="从头学习图像细分类网络详细记录"><a href="#从头学习图像细分类网络详细记录" class="headerlink" title="从头学习图像细分类网络详细记录"></a>从头学习图像细分类网络详细记录</h1><h2 id="写代码前期准备："><a href="#写代码前期准备：" class="headerlink" title="写代码前期准备："></a>写代码前期准备：</h2><h3 id="code"><a href="#code" class="headerlink" title="code"></a>code</h3><p><a href="https://github.com/machrisaa/tensorflow-vgg" target="_blank" rel="noopener">VGG-TensorFlow代码链接：</a></p>
+<p>为什么选择该代码，原因如下：</p>
+<p>① 基本的网络结构有，简单测试也有，可以大规模修改</p>
+<p>② issue提交较多，有什么问题大家都遇到过，可以参考</p>
+<p>③ 基于之前的分割网络，再使用细分类网络【这一点想到是否可以利用之前的分割网络来进行分类？我是小白。。没读多少文章】；分割网络有详细的dataset如何组织，loss如何计算等可以参考</p>
+<p>④ 还是自己想学着搭建一点</p>
+<p>这篇文章可能会持续很久</p>
+<h3 id="pre-trained模型"><a href="#pre-trained模型" class="headerlink" title="pre-trained模型"></a>pre-trained模型</h3><p>之前训练过VGG网络用来进行图像分割，下载了一个vgg16.npz模型，了解了一下差别：</p>
+<p>npy和npz文件，都是numpy存储保存数据的格式。</p>
+<p>npy文件是通过np.save和np.load来进行读写的，存储到磁盘上是未压缩的原始的二进制格式。</p>
+<p>而npz格式可以通过np.savez将多个数组保存到一个文件中，输出的是一个压缩文件npz，可以使用rar打开查看，其中每个文件都是npy格式。</p>
+<p>下载的<a href="https://pan.baidu.com/s/1weg_hw-F9wVjK0J7ldjNZw" target="_blank" rel="noopener">vgg16.npy</a>，是在学习该博主的使用<a href="https://morvanzhou.github.io/tutorials/machine-learning/tensorflow/5-16-transfer-learning/" target="_blank" rel="noopener">tensorflow搭建迁移学习</a>的网络中保存在他的百度云账号中。</p>
+<p>另外还有参考<a href="https://blog.csdn.net/weixin_31200719/article/details/81220924" target="_blank" rel="noopener">csdn博客</a></p>
+<p>预训练模型下载完毕，有一点疑问？</p>
+<p>我使用这个在1000类上的分类网络参数，想要这个网络通过微调能够进行其中某一类的细分类，是否能够完成？</p>
+<p>先粗略的实验吧，看看效果。</p>
+<h2 id="修改vgg16模型代码："><a href="#修改vgg16模型代码：" class="headerlink" title="修改vgg16模型代码："></a>修改vgg16模型代码：</h2><p><img src="http://pl06226jn.bkt.clouddn.com/%E7%BD%91%E7%BB%9C%E7%BB%86%E5%88%86%E7%B1%BB%E5%8D%9A%E5%AE%A25_16_04.png" alt="5_16_04"></p>
+<p>首先了解一下vgg16的参数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">INPUT: [<span class="number">224</span>x224x3]        memory:  <span class="number">224</span>*<span class="number">224</span>*<span class="number">3</span>=<span class="number">150</span>K   weights: <span class="number">0</span></span><br><span class="line">CONV3<span class="number">-64</span>: [<span class="number">224</span>x224x64]  memory:  <span class="number">224</span>*<span class="number">224</span>*<span class="number">64</span>=<span class="number">3.2</span>M   weights: (<span class="number">3</span>*<span class="number">3</span>*<span class="number">3</span>)*<span class="number">64</span> = <span class="number">1</span>,<span class="number">728</span></span><br><span class="line">CONV3<span class="number">-64</span>: [<span class="number">224</span>x224x64]  memory:  <span class="number">224</span>*<span class="number">224</span>*<span class="number">64</span>=<span class="number">3.2</span>M   weights: (<span class="number">3</span>*<span class="number">3</span>*<span class="number">64</span>)*<span class="number">64</span> = <span class="number">36</span>,<span class="number">864</span></span><br><span class="line">POOL2: [<span class="number">112</span>x112x64]  memory:  <span class="number">112</span>*<span class="number">112</span>*<span class="number">64</span>=<span class="number">800</span>K   weights: <span class="number">0</span></span><br><span class="line">CONV3<span class="number">-128</span>: [<span class="number">112</span>x112x128]  memory:  <span class="number">112</span>*<span class="number">112</span>*<span class="number">128</span>=<span class="number">1.6</span>M   weights: (<span class="number">3</span>*<span class="number">3</span>*<span class="number">64</span>)*<span class="number">128</span> = <span class="number">73</span>,<span class="number">728</span></span><br><span class="line">CONV3<span class="number">-128</span>: [<span class="number">112</span>x112x128]  memory:  <span class="number">112</span>*<span class="number">112</span>*<span class="number">128</span>=<span class="number">1.6</span>M   weights: (<span class="number">3</span>*<span class="number">3</span>*<span class="number">128</span>)*<span class="number">128</span> = <span class="number">147</span>,<span class="number">456</span></span><br><span class="line">POOL2: [<span class="number">56</span>x56x128]  memory:  <span class="number">56</span>*<span class="number">56</span>*<span class="number">128</span>=<span class="number">400</span>K   weights: <span class="number">0</span></span><br><span class="line">CONV3<span class="number">-256</span>: [<span class="number">56</span>x56x256]  memory:  <span class="number">56</span>*<span class="number">56</span>*<span class="number">256</span>=<span class="number">800</span>K   weights: (<span class="number">3</span>*<span class="number">3</span>*<span class="number">128</span>)*<span class="number">256</span> = <span class="number">294</span>,<span class="number">912</span></span><br><span class="line">CONV3<span class="number">-256</span>: [<span class="number">56</span>x56x256]  memory:  <span class="number">56</span>*<span class="number">56</span>*<span class="number">256</span>=<span class="number">800</span>K   weights: (<span class="number">3</span>*<span class="number">3</span>*<span class="number">256</span>)*<span class="number">256</span> = <span class="number">589</span>,<span class="number">824</span></span><br><span class="line">CONV3<span class="number">-256</span>: [<span class="number">56</span>x56x256]  memory:  <span class="number">56</span>*<span class="number">56</span>*<span class="number">256</span>=<span class="number">800</span>K   weights: (<span class="number">3</span>*<span class="number">3</span>*<span class="number">256</span>)*<span class="number">256</span> = <span class="number">589</span>,<span class="number">824</span></span><br><span class="line">POOL2: [<span class="number">28</span>x28x256]  memory:  <span class="number">28</span>*<span class="number">28</span>*<span class="number">256</span>=<span class="number">200</span>K   weights: <span class="number">0</span></span><br><span class="line">CONV3<span class="number">-512</span>: [<span class="number">28</span>x28x512]  memory:  <span class="number">28</span>*<span class="number">28</span>*<span class="number">512</span>=<span class="number">400</span>K   weights: (<span class="number">3</span>*<span class="number">3</span>*<span class="number">256</span>)*<span class="number">512</span> = <span class="number">1</span>,<span class="number">179</span>,<span class="number">648</span></span><br><span class="line">CONV3<span class="number">-512</span>: [<span class="number">28</span>x28x512]  memory:  <span class="number">28</span>*<span class="number">28</span>*<span class="number">512</span>=<span class="number">400</span>K   weights: (<span class="number">3</span>*<span class="number">3</span>*<span class="number">512</span>)*<span class="number">512</span> = <span class="number">2</span>,<span class="number">359</span>,<span class="number">296</span></span><br><span class="line">CONV3<span class="number">-512</span>: [<span class="number">28</span>x28x512]  memory:  <span class="number">28</span>*<span class="number">28</span>*<span class="number">512</span>=<span class="number">400</span>K   weights: (<span class="number">3</span>*<span class="number">3</span>*<span class="number">512</span>)*<span class="number">512</span> = <span class="number">2</span>,<span class="number">359</span>,<span class="number">296</span></span><br><span class="line">POOL2: [<span class="number">14</span>x14x512]  memory:  <span class="number">14</span>*<span class="number">14</span>*<span class="number">512</span>=<span class="number">100</span>K   weights: <span class="number">0</span></span><br><span class="line">CONV3<span class="number">-512</span>: [<span class="number">14</span>x14x512]  memory:  <span class="number">14</span>*<span class="number">14</span>*<span class="number">512</span>=<span class="number">100</span>K   weights: (<span class="number">3</span>*<span class="number">3</span>*<span class="number">512</span>)*<span class="number">512</span> = <span class="number">2</span>,<span class="number">359</span>,<span class="number">296</span></span><br><span class="line">CONV3<span class="number">-512</span>: [<span class="number">14</span>x14x512]  memory:  <span class="number">14</span>*<span class="number">14</span>*<span class="number">512</span>=<span class="number">100</span>K   weights: (<span class="number">3</span>*<span class="number">3</span>*<span class="number">512</span>)*<span class="number">512</span> = <span class="number">2</span>,<span class="number">359</span>,<span class="number">296</span></span><br><span class="line">CONV3<span class="number">-512</span>: [<span class="number">14</span>x14x512]  memory:  <span class="number">14</span>*<span class="number">14</span>*<span class="number">512</span>=<span class="number">100</span>K   weights: (<span class="number">3</span>*<span class="number">3</span>*<span class="number">512</span>)*<span class="number">512</span> = <span class="number">2</span>,<span class="number">359</span>,<span class="number">296</span></span><br><span class="line">POOL2: [<span class="number">7</span>x7x512]  memory:  <span class="number">7</span>*<span class="number">7</span>*<span class="number">512</span>=<span class="number">25</span>K  weights: <span class="number">0</span></span><br><span class="line">FC: [<span class="number">1</span>x1x4096]  memory:  <span class="number">4096</span>  weights: <span class="number">7</span>*<span class="number">7</span>*<span class="number">512</span>*<span class="number">4096</span> = <span class="number">102</span>,<span class="number">760</span>,<span class="number">448</span></span><br><span class="line">FC: [<span class="number">1</span>x1x4096]  memory:  <span class="number">4096</span>  weights: <span class="number">4096</span>*<span class="number">4096</span> = <span class="number">16</span>,<span class="number">777</span>,<span class="number">216</span></span><br><span class="line">FC: [<span class="number">1</span>x1x1000]  memory:  <span class="number">1000</span> weights: <span class="number">4096</span>*<span class="number">1000</span> = <span class="number">4</span>,<span class="number">096</span>,<span class="number">000</span></span><br><span class="line"> </span><br><span class="line">TOTAL memory: <span class="number">24</span>M * <span class="number">4</span> bytes ~= <span class="number">93</span>MB / image (only forward! ~*<span class="number">2</span> <span class="keyword">for</span> bwd)</span><br><span class="line">TOTAL params: <span class="number">138</span>M parameters</span><br></pre></td></tr></table></figure>
+<p>我能够理解卷积层的作用：通过卷积核，使得下一层与上一层有联系，并且保证了提取局部特征。</p>
+<p>pooling 层最大的作用是引入不变性，例如max_pooling取一片区域的最大值，所以这个最大值在该区域内无论在哪，max-pooling之后都是它，相当于对微小位移的不变性。并且能够提升计算速度，大部分不重要的细节都被省略。</p>
+<p>卷积层、池化层和激活函数层等操作是将原始数据映射到隐层特征空间</p>
+<p>全连接层在整个卷积神经网络中起到“分类器”的作用。将学习到的分布式特征映射到样本标记空间的作用。</p>
+<p>激活函数：将神经网络每层输出结果变得非线性化？？ 常用函数 sigmoid tanh relu</p>
+<blockquote>
+<p>全连接层可由卷积操作实现：对前层是全连接的全连接层可以转化为卷积核为1x1的卷积；而前层是卷积层的全连接层可以转化为卷积核为hxw的全局卷积，h和w分别为前层卷积结果的高和宽</p>
+<p><a href="https://www.zhihu.com/question/41037974/answer/150522307" target="_blank" rel="noopener">来源知乎，引用地址</a></p>
+</blockquote>
+<p>正则化：防止过拟合，在神经网路中通过在反向传播误差更新权值时候随机选择一部分权值不更新，相当于随机删除一部分hidden units（不是真实删除了，只是暂时不使用这部分units），通过这样的方法就能防止过拟合。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Vgg16</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">build</span><span class="params">()</span>:</span></span><br><span class="line">        <span class="comment"># ...前面的层</span></span><br><span class="line">        self.pool5 = self.max_pool(self.conv5_3, <span class="string">'pool5'</span>)</span><br></pre></td></tr></table></figure>
+<p>根据莫烦python所说，在这个vgg16，pooling5之前的层，都是不能被 train 的，OK那我们不动. </p>
+<p>pool5 是最后的 conv 出来的结果，因为训练自己的数据，全连接层最好不要使用预训练参数。然后按照vgg19_trainable.进行修改vgg16.</p>
+<p>代码和在代码中注释修改提交至：<strong><strong><strong><strong><strong><strong>____</strong></strong></strong></strong></strong></strong></p>
+<p>那我们在这之后做出修改，我们只有25类，在最后我又加入一层新的全连接层，1000-&gt;25类</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">self.fc7 = self.fc_layer(self.relu6, <span class="number">4096</span>, <span class="number">4096</span>, <span class="string">"fc7"</span>)</span><br><span class="line">        self.relu7 = tf.nn.relu(self.fc7)</span><br><span class="line">        <span class="keyword">if</span> train_mode <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</span><br><span class="line">            self.relu7 = tf.cond(train_mode, <span class="keyword">lambda</span>: tf.nn.dropout(self.relu7, self.dropout), <span class="keyword">lambda</span>: self.relu7)</span><br><span class="line">        <span class="keyword">elif</span> self.trainable:</span><br><span class="line">            self.relu7 = tf.nn.dropout(self.relu7, self.dropout)</span><br><span class="line"></span><br><span class="line">        self.fc8 = self.fc_layer(self.relu7, <span class="number">4096</span>, <span class="number">1000</span>, <span class="string">"fc8"</span>)</span><br><span class="line"></span><br><span class="line">        self.prob = tf.nn.softmax(self.fc8, name=<span class="string">"prob"</span>)</span><br></pre></td></tr></table></figure>
+<p>先按照之前的测试用例来看，是否能通过两张图的非训练状态。噢噢出现错误了，赶紧记录下来：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;D:\project\tensorflow-vgg-master\test_vgg16.py&quot;, line 30, in &lt;module&gt;</span><br><span class="line">    prob = sess.run(vgg.prob, feed_dict=feed_dict)</span><br><span class="line">  File &quot;C:\ProgramData\Anaconda3\lib\site-packages\tensorflow\python\client\session.py&quot;, line 895, in run</span><br><span class="line">    run_metadata_ptr)</span><br><span class="line">  File &quot;C:\ProgramData\Anaconda3\lib\site-packages\tensorflow\python\client\session.py&quot;, line 1128, in _run</span><br><span class="line">    feed_dict_tensor, options, run_metadata)</span><br><span class="line">  File &quot;C:\ProgramData\Anaconda3\lib\site-packages\tensorflow\python\client\session.py&quot;, line 1344, in _do_run</span><br><span class="line">    options, run_metadata)</span><br><span class="line">  File &quot;C:\ProgramData\Anaconda3\lib\site-packages\tensorflow\python\client\session.py&quot;, line 1363, in _do_call</span><br><span class="line">    raise type(e)(node_def, op, message)</span><br><span class="line">tensorflow.python.framework.errors_impl.FailedPreconditionError: Attempting to use uninitialized value conv1_2/conv1_2_biases</span><br><span class="line">         [[Node: conv1_2/conv1_2_biases/read = Identity[T=DT_FLOAT, _class=[&quot;loc:@conv1_2/conv1_2_biases&quot;], _device=&quot;/job:localhost/replica:0/task:0/device:CPU:0&quot;](conv1_2/conv1_2_biases)]]</span><br><span class="line"></span><br><span class="line">Caused by op &apos;conv1_2/conv1_2_biases/read&apos;, defined at:</span><br><span class="line">  File &quot;D:\project\tensorflow-vgg-master\test_vgg16.py&quot;, line 25, in &lt;module&gt;</span><br><span class="line">    vgg.build(images,train_mode)</span><br><span class="line">  File &quot;D:\project\tensorflow-vgg-master\vgg16.py&quot;, line 48, in build</span><br><span class="line">    self.conv1_2 = self.conv_layer(self.conv1_1, 64 , 64 , &quot;conv1_2&quot;)</span><br><span class="line">  File &quot;D:\project\tensorflow-vgg-master\vgg16.py&quot;, line 117, in conv_layer</span><br><span class="line">    filt, conv_biases = self.get_conv_var(3, in_channels, out_channels, name)</span><br><span class="line">  File &quot;D:\project\tensorflow-vgg-master\vgg16.py&quot;, line 135, in get_conv_var</span><br><span class="line">    biases = self.get_var(initial_value, name, 1, name + &quot;_biases&quot;)</span><br><span class="line">  File &quot;D:\project\tensorflow-vgg-master\vgg16.py&quot;, line 147, in get_var</span><br><span class="line">    var = tf.Variable(value, name=var_name)</span><br><span class="line">  File &quot;C:\ProgramData\Anaconda3\lib\site-packages\tensorflow\python\ops\variables.py&quot;, line 229, in __init__</span><br><span class="line">    constraint=constraint)</span><br><span class="line">  File &quot;C:\ProgramData\Anaconda3\lib\site-packages\tensorflow\python\ops\variables.py&quot;, line 376, in _init_from_args</span><br><span class="line">    self._snapshot = array_ops.identity(self._variable, name=&quot;read&quot;)</span><br><span class="line">  File &quot;C:\ProgramData\Anaconda3\lib\site-packages\tensorflow\python\ops\array_ops.py&quot;, line 127, in identity</span><br><span class="line">    return gen_array_ops.identity(input, name=name)</span><br><span class="line">  File &quot;C:\ProgramData\Anaconda3\lib\site-packages\tensorflow\python\ops\gen_array_ops.py&quot;, line 2728, in identity</span><br><span class="line">    &quot;Identity&quot;, input=input, name=name)</span><br><span class="line">  File &quot;C:\ProgramData\Anaconda3\lib\site-packages\tensorflow\python\framework\op_def_library.py&quot;, line 787, in _apply_op_helper</span><br><span class="line">    op_def=op_def)</span><br><span class="line">  File &quot;C:\ProgramData\Anaconda3\lib\site-packages\tensorflow\python\framework\ops.py&quot;, line 3160, in create_op</span><br><span class="line">    op_def=op_def)</span><br><span class="line">  File &quot;C:\ProgramData\Anaconda3\lib\site-packages\tensorflow\python\framework\ops.py&quot;, line 1625, in __init__</span><br><span class="line">    self._traceback = self._graph._extract_stack()  # pylint: disable=protected-access</span><br><span class="line"></span><br><span class="line">FailedPreconditionError (see above for traceback): Attempting to use uninitialized value conv1_2/conv1_2_biases</span><br><span class="line">         [[Node: conv1_2/conv1_2_biases/read = Identity[T=DT_FLOAT, _class=[&quot;loc:@conv1_2/conv1_2_biases&quot;], _device=&quot;/job:localhost/replica:0/task:0/device:CPU:0&quot;](conv1_2/conv1_2_biases)]]</span><br></pre></td></tr></table></figure>
+<p>这么长是说，在run这个语句：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">prob = sess.run(vgg.prob, feed_dict=feed_dict)</span><br></pre></td></tr></table></figure>
+<p>的时候，有没有初始化的变量。</p>
+<p>我们在run之前加一句</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sess.run(tf.global_variables_initializer())</span><br></pre></td></tr></table></figure>
+<p>完美解决。</p>
+<p>以上是修改过的网络，通过简单两张图的测试的过程。</p>
+<h2 id="修改vgg训练代码"><a href="#修改vgg训练代码" class="headerlink" title="修改vgg训练代码"></a>修改vgg训练代码</h2><h3 id="数据前期准备和读取"><a href="#数据前期准备和读取" class="headerlink" title="数据前期准备和读取"></a>数据前期准备和读取</h3><p>要完成微调，首先得写一下loss，写loss前，首先得把数据的标签one-hot类型的给写了，因为我的只有25类，而且数据文件夹的格式是这样的:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">-data</span><br><span class="line">|</span><br><span class="line">|---0</span><br><span class="line">|	|</span><br><span class="line">|	-----xxx.bmp</span><br><span class="line">|	-----xxx.bmp</span><br><span class="line">|---1</span><br><span class="line">.....</span><br></pre></td></tr></table></figure>
+<p>所以写了一段代码将文件的路径和label数据都存入txt，需要的时候直接读取，并转换成onehot数据即可。在module1.py中，主要代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&quot;&quot;&quot;</span><br><span class="line">将图像路径和label写入txt文件</span><br><span class="line">author:monkey</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">idx = -1</span><br><span class="line">for dirpath,dirs,files in os.walk(datapath):</span><br><span class="line">    for file in files:</span><br><span class="line">        label = labels[idx]</span><br><span class="line">        writepath = os.path.join(dirpath,file)</span><br><span class="line">        filetxt.write(writepath)</span><br><span class="line">        filetxt.write(&apos; &apos;)</span><br><span class="line">        filetxt.write(label)</span><br><span class="line">        filetxt.write(&apos;\n&apos;)</span><br><span class="line">    idx += 1</span><br></pre></td></tr></table></figure>
+<p>写标签文件之后，写一个dataset的类读取batch和label的代码，实现随机读取图像为batch的功能，在dataset.py中。</p>
+<p>之后直接在train文件中调用即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dataset = Datasets.dataset(&apos;./label.txt&apos;)</span><br><span class="line">batch,labels = dataset.getbatch(batchsize)</span><br></pre></td></tr></table></figure>
+<h3 id="训练代码编写"><a href="#训练代码编写" class="headerlink" title="训练代码编写"></a>训练代码编写</h3><p>搞定数据和读取之后，就是常规的tensorflow代码的编写了，写在vgg16_train.py里。</p>
+<p>训练的结果还可以：迭代2000次后准确率不错。</p>
+<p><img src="http://pl06226jn.bkt.clouddn.com/%E7%BD%91%E7%BB%9C%E7%BB%86%E5%88%86%E7%B1%BB%E5%8D%9A%E5%AE%A2%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190116090947.png" alt="附上图片"></p>
+<h3 id="测试代码的编写"><a href="#测试代码的编写" class="headerlink" title="测试代码的编写"></a>测试代码的编写</h3><p>训练时候的数据这么好看，如何保证网络没有过拟合呢？</p>
+<p>首先如同训练数据的准备一样，准备测试数据和label。注意测试数据一定要保证没有在训练数据中出现过才能保证测试的准确性。【重要的一点！得保证测试数据和训练数据的随机性】</p>
+<p>我的训练数据和测试数据就没有保证，所以得重新划分数据并且重新训练。</p>
+<p><img src="http://pl06226jn.bkt.clouddn.com/%E7%BD%91%E7%BB%9C%E7%BB%86%E5%88%86%E7%B1%BB%E5%8D%9A%E5%AE%A2%E6%8D%95%E8%8E%B7.PNG" alt="捕获"></p>
+<p><img src="http://pl06226jn.bkt.clouddn.com/%E7%BD%91%E7%BB%9C%E7%BB%86%E5%88%86%E7%B1%BB%E5%8D%9A%E5%AE%A2%E6%8D%95%E8%8E%B72.PNG" alt="捕获2"></p>
+<p>重新随机划分数据集的代码在module1中，自取，有很多方便的小代码也在，可以看看。</p>
+
+        
+        <br>
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/看见我的猫了吗_">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+        
+        <li>
+            <a target="_blank" href="https://github.com/paidaxingNUDT">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>

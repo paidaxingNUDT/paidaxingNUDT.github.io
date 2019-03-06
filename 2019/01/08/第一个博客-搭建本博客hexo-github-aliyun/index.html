@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="猴赛雷的博客">
+    <meta name="keyword" content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        第一个博客 搭建本博客hexo+github+aliyun - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> 是个狼人 </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="//monkey-hexo.oss-cn-beijing.aliyuncs.com/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%85%8D%E5%9B%BE/%E7%AE%80%E5%8E%86%E7%85%A7.jpg">
+        </div>
+        <div class="name">
+            <i>猴赛雷</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li>
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li>
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装node-js-for-windows"><span class="toc-text">安装node.js for windows</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#官网下载"><span class="toc-text">官网下载</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装git"><span class="toc-text">安装git</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#官网下载-1"><span class="toc-text">官网下载</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装hexo"><span class="toc-text">安装hexo</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#初始化博客"><span class="toc-text">初始化博客</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置网站"><span class="toc-text">配置网站</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#config-yml"><span class="toc-text">_config.yml</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#网站"><span class="toc-text">网站</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#网址"><span class="toc-text">网址</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#目录"><span class="toc-text">目录</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#文章"><span class="toc-text">文章</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#package-json"><span class="toc-text">package.json</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启动服务"><span class="toc-text">启动服务</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#通过github"><span class="toc-text">通过github</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建github仓库"><span class="toc-text">创建github仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置本地博客文件"><span class="toc-text">配置本地博客文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置Github的SSH"><span class="toc-text">配置Github的SSH</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#问题合集"><span class="toc-text">问题合集</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Error-Cannot-find-module-‘cheerio’"><span class="toc-text">1. Error: Cannot find module ‘cheerio’</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-hexo-d后-ERROR-Deployer-not-found-git"><span class="toc-text">2. hexo d后 ERROR Deployer not found: git</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input">
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> 是个狼人 </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        第一个博客 搭建本博客hexo+github+aliyun
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2019-01-08 15:07:18</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#monkey" title="monkey">monkey</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+
+    </div>
+    <div class="post-content ">
+        <h2 id="安装node-js-for-windows"><a href="#安装node-js-for-windows" class="headerlink" title="安装node.js for windows"></a>安装node.js for windows</h2><h3 id="官网下载"><a href="#官网下载" class="headerlink" title="官网下载"></a>官网下载</h3><p>链接：<a href="https://nodejs.org/en/" target="_blank" rel="noopener">nodejs官网</a><br><img src="http://pl06226jn.bkt.clouddn.com/1546493010533.png" alt="Alt text"><br>点击上方<strong>[downloads]</strong>，选择Windows Installer (.msi)<br><img src="http://pl06226jn.bkt.clouddn.com/1546493074889.png" alt="Alt text"><br>双击下载好的msi安装,选择安装路径即可。<br><img src="http://pl06226jn.bkt.clouddn.com/1546493198850.png" alt="Alt text"><br>我选择的是【node.js runtime】<br>[新版本都不需要设计环境变量了，软件会自动写入环境变量]</p>
+<h2 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h2><h3 id="官网下载-1"><a href="#官网下载-1" class="headerlink" title="官网下载"></a>官网下载</h3><p>链接：<a href="https://git-scm.com/downloads" target="_blank" rel="noopener">Git下载官网</a><br>双击下载好的exe，选择安装路径即可。<br><img src="http://pl06226jn.bkt.clouddn.com/1546493398128.png" alt="Alt text"></p>
+<h2 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h2><p>所有必备的应用程序安装完成后，即可使用 npm 安装 Hexo。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure></p>
+<h3 id="初始化博客"><a href="#初始化博客" class="headerlink" title="初始化博客"></a>初始化博客</h3><p>在你的本地新建一个存放博客的目录，比如”D:\MyHexoBlog“，然后在这个目录右键，选择”Git Bash Here“，输入下面两条命令进行初始化：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure></p>
+<p>初始化完成之后，你的目录结构应该是这样的[关键文件config、source、等存在即可]：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── _config.yml</span><br><span class="line">├── package.json</span><br><span class="line">├── scaffolds</span><br><span class="line">├── source</span><br><span class="line">|   ├── _drafts</span><br><span class="line">|   └── _posts</span><br><span class="line">└── themes</span><br></pre></td></tr></table></figure></p>
+<h3 id="配置网站"><a href="#配置网站" class="headerlink" title="配置网站"></a>配置网站</h3><h4 id="config-yml"><a href="#config-yml" class="headerlink" title="_config.yml"></a>_config.yml</h4><p>可以在 _config.yml 中修改大部分的配置。</p>
+<h5 id="网站"><a href="#网站" class="headerlink" title="网站"></a>网站</h5><table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">title</td>
+<td style="text-align:center">网站标题</td>
+</tr>
+<tr>
+<td style="text-align:center">subtitle</td>
+<td style="text-align:center">网站副标题</td>
+</tr>
+<tr>
+<td style="text-align:center">description</td>
+<td style="text-align:center">网站描述</td>
+</tr>
+<tr>
+<td style="text-align:center">author</td>
+<td style="text-align:center">您的名字</td>
+</tr>
+<tr>
+<td style="text-align:center">language</td>
+<td style="text-align:center">网站使用的语言</td>
+</tr>
+<tr>
+<td style="text-align:center">timezone</td>
+<td style="text-align:center">网站时区。Hexo 默认使用您电脑的时区。时区列表。比如说：America/New_York, Japan, 和 UTC 。</td>
+</tr>
+</tbody>
+</table>
+<p>其中，description主要用于SEO，告诉搜索引擎一个关于您站点的简单描述，通常建议在其中包含您网站的关键词。author参数用于主题显示文章的作者。</p>
+<h5 id="网址"><a href="#网址" class="headerlink" title="网址"></a>网址</h5><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>url</td>
+<td>网址</td>
+<td></td>
+</tr>
+<tr>
+<td>root</td>
+<td>网站根目录</td>
+<td></td>
+</tr>
+<tr>
+<td>permalink</td>
+<td>文章的 永久链接 格式</td>
+<td>:year/:month/:day/:title/</td>
+</tr>
+<tr>
+<td>permalink_defaults</td>
+<td>永久链接中各部分的默认值</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>如果您的网站存放在子目录中，例如 <a href="http://yoursite.com/blog，则请将您的" target="_blank" rel="noopener">http://yoursite.com/blog，则请将您的</a> url 设为 <a href="http://yoursite.com/blog" target="_blank" rel="noopener">http://yoursite.com/blog</a> 并把 root 设为 /blog/。</p>
+</blockquote>
+<h5 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h5><blockquote>
+<p>刚开始没必要修改这部分内容，需要修改请参考：<a href="https://hexo.io/zh-cn/docs/configuration#%E7%9B%AE%E5%BD%95" target="_blank" rel="noopener">hexo手册</a></p>
+</blockquote>
+<h5 id="文章"><a href="#文章" class="headerlink" title="文章"></a>文章</h5><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>new_post_name</td>
+<td>新文章的文件名称</td>
+<td>:title.md</td>
+</tr>
+<tr>
+<td>default_layout</td>
+<td>预设布局</td>
+<td>post</td>
+</tr>
+<tr>
+<td>auto_spacing</td>
+<td>在中文和英文之间加入空格</td>
+<td>false</td>
+</tr>
+<tr>
+<td>titlecase</td>
+<td>把标题转换为 title case</td>
+<td>false</td>
+</tr>
+<tr>
+<td>external_link</td>
+<td>在新标签中打开链接</td>
+<td>true</td>
+</tr>
+<tr>
+<td>filename_case</td>
+<td>把文件名称转换为 (1) 小写或 (2) 大写</td>
+<td>0</td>
+</tr>
+<tr>
+<td>render_drafts</td>
+<td>显示草稿</td>
+<td>false</td>
+</tr>
+<tr>
+<td>post_asset_folder</td>
+<td>启动 Asset 文件夹</td>
+<td>false</td>
+</tr>
+<tr>
+<td>relative_link</td>
+<td>把链接改为与根目录的相对位址</td>
+<td>false</td>
+</tr>
+<tr>
+<td>future</td>
+<td>显示未来的文章</td>
+<td>true</td>
+</tr>
+<tr>
+<td>highlight</td>
+<td>代码块的设置</td>
+</tr>
+</tbody>
+</table>
+<h4 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h4><h3 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h3><p>如果没有出错的话，在git命令行中继续执行下面的指令启动服务：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g </span><br><span class="line">$ hexo s</span><br></pre></td></tr></table></figure></p>
+<p>启动之后，在浏览器中访问：<a href="http://localhost:4000/，博客页面如下：" target="_blank" rel="noopener">http://localhost:4000/，博客页面如下：</a><br><img src="http://pl06226jn.bkt.clouddn.com/1546494415746.png" alt="Alt text"><br>很丑而且是本地的，如何能够通过外网访问呢？</p>
+<h2 id="通过github"><a href="#通过github" class="headerlink" title="通过github"></a>通过github</h2><h3 id="创建github仓库"><a href="#创建github仓库" class="headerlink" title="创建github仓库"></a>创建github仓库</h3><p>想要别人也访问到你的页面，首先在Github官网上注册一个账号，有账号的跳过注册，直接登录。登录后找到new repository按钮创建一个新的仓库，填写并创建。<br><img src="http://pl06226jn.bkt.clouddn.com/1546494653963.png" alt="Alt text"></p>
+<blockquote>
+<p>要注意的是：这个名字的格式必须为<strong>youname</strong>.github.io，这个yourname要与你的github账户名相同，比如我的账户名是paidaxingNUDT.，我的地址就是paidaxingNUDT.github.io</p>
+</blockquote>
+<h3 id="配置本地博客文件"><a href="#配置本地博客文件" class="headerlink" title="配置本地博客文件"></a>配置本地博客文件</h3><p>首先打开站点配置文件_config.yml，找到最后的deploy属性，修改为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: git@github.com:paidaxingNUDT/paidaxingNUDT.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>注意该配置文件属性后面的冒号必须要有一个空格，否则会报错</p>
+</blockquote>
+<p> 在sorce文件夹下创建CNAME文件：<br> <img src="http://pl06226jn.bkt.clouddn.com/1546495555353.png" alt="Alt text"><br>编辑为yourname.github.io ，保存</p>
+<h3 id="配置Github的SSH"><a href="#配置Github的SSH" class="headerlink" title="配置Github的SSH"></a>配置Github的SSH</h3><p>首先选择账户的setting：<br><img src="http://pl06226jn.bkt.clouddn.com/1546495048466.png" alt="Alt text"><br>然后选择SSH并创建一个新的：<br><img src="http://pl06226jn.bkt.clouddn.com/1546495115058.png" alt="Alt text"><br>用管理员身份开命令提示符：<br>输入以下命令：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"your github name"</span></span><br><span class="line"><span class="comment">#三个回车，保存SSH文件在默认地址：我的是(C:\Users\Monkey/.ssh/id_rsa)</span></span><br><span class="line"><span class="comment">#出现Generating public/private rsa key pair.</span></span><br><span class="line"><span class="comment">#Enter file in which to save the key (C:\Users\Monkey/.ssh/id_rsa):</span></span><br><span class="line"><span class="comment">#查看SSH文件</span></span><br><span class="line"></span><br><span class="line">TYPE C:\Users\Monkey\.ssh\id_rsa.pub</span><br><span class="line"></span><br><span class="line"><span class="comment"># ssh-rsa AAAAB3Nz12332456789..................#很长一串即为SSH</span></span><br></pre></td></tr></table></figure>
+<p>将该SSH复制到下方并创建：<br><img src="http://pl06226jn.bkt.clouddn.com/1546495451770.png" alt="Alt text"></p>
+<p> 配置完成之后通过该命令同步：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br><span class="line">$ hexo g</span><br><span class="line">$ hexo d</span><br></pre></td></tr></table></figure></p>
+<p>没有出错的话，输入yourname.github.io即可访问你的博客主页</p>
+<p>如果想要有自己的域名。。。等我填坑吧。。。忙着赶论文，没有啥时间写啦~~</p>
+<h2 id="问题合集"><a href="#问题合集" class="headerlink" title="问题合集"></a>问题合集</h2><h3 id="1-Error-Cannot-find-module-‘cheerio’"><a href="#1-Error-Cannot-find-module-‘cheerio’" class="headerlink" title="1. Error: Cannot find module ‘cheerio’"></a>1. Error: Cannot find module ‘cheerio’</h3><p>在更新我的配置并同步到github上时，输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure></p>
+<p>出现该问题。</p>
+<p>首先排除我的环境变量设置的问题，在nodejs的安装目录和这个目录下：<br><img src="http://pl06226jn.bkt.clouddn.com/1546501315329.png" alt="Alt text"><br>确实不存在cheerio这个模块，通过npm进行安装即可，在你的博客目录下，右键，点击git bush here，输入以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install cheeio --save</span><br></pre></td></tr></table></figure>
+<p>通过npm安装第三方模块，-save的作用的把你安装的这个第三方模块的依赖写入到package.json里面。</p>
+<h3 id="2-hexo-d后-ERROR-Deployer-not-found-git"><a href="#2-hexo-d后-ERROR-Deployer-not-found-git" class="headerlink" title="2. hexo d后 ERROR Deployer not found: git"></a>2. hexo d后 ERROR Deployer not found: git</h3>
+        
+        <br>
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/看见我的猫了吗_">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+        
+        <li>
+            <a target="_blank" href="https://github.com/paidaxingNUDT">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>
